@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://duhft13kythpe"]
+
+[ext_resource type="StyleBox" uid="uid://bqffsslyyv5re" path="res://resources/UI/ui_slot.tres" id="1_ya1yw"]
+
+[node name="slot_ui" type="Panel" unique_id=1777112882]
+custom_minimum_size = Vector2(50, 50)
+theme_override_styles/panel = ExtResource("1_ya1yw")
+
+[node name="slot_holder" type="Panel" parent="." unique_id=1228796486]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(2, 2)

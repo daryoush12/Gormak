@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c08qxs6lx7pe"]
+
+[ext_resource type="PackedScene" uid="uid://ibxv4jl5jkfp" path="res://nodes/g_coin.tscn" id="1_12lyp"]
+
+[node name="Coin" type="StaticBody2D" unique_id=737130521]
+
+[node name="Area2D" parent="." unique_id=921897694 instance=ExtResource("1_12lyp")]

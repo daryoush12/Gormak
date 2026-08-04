@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dhoh4ol4acbey"]
+
+[ext_resource type="Script" uid="uid://8khdj5suchao" path="res://src/Player/Platform.cs" id="1_jrctg"]
+[ext_resource type="Texture2D" uid="uid://41je2kej0lfk" path="res://resources/Platform.tres" id="2_7dq2d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bp41e"]
+size = Vector2(32, 8)
+
+[node name="Platform" type="AnimatableBody2D" unique_id=1360930191 node_paths=PackedStringArray("Array")]
+process_mode = 3
+script = ExtResource("1_jrctg")
+Array = [NodePath(""), NodePath("")]
+
+[node name="Platform" type="Sprite2D" parent="." unique_id=563251402]
+texture = ExtResource("2_7dq2d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=533955120]
+shape = SubResource("RectangleShape2D_bp41e")

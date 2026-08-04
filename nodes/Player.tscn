@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://d3y6537hjdlgs"]
+
+[ext_resource type="Script" uid="uid://b0cuseji6l4hc" path="res://src/Player/PlayerManager.cs" id="1_x4r3j"]
+[ext_resource type="AudioStream" uid="uid://dqfca0gvg1gml" path="res://assets/sounds/jump.wav" id="2_u71v6"]
+[ext_resource type="AudioStream" uid="uid://c7vojiltg50dx" path="res://assets/sounds/hurt.wav" id="3_b5sd1"]
+[ext_resource type="Script" uid="uid://s6yf0f07j2v6" path="res://src/Player/AnimationManager.cs" id="3_u71v6"]
+[ext_resource type="SpriteFrames" uid="uid://c7rp2rcu4h6my" path="res://resources/SpriteFrames/dude.tres" id="4_u71v6"]
+[ext_resource type="SpriteFrames" uid="uid://bsitppkk0vyve" path="res://resources/SpriteFrames/dude_sfx.tres" id="6_b5sd1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bp41e"]
+size = Vector2(12, 18)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1736184293 groups=["Player"]]
+disable_mode = 2
+input_pickable = true
+script = ExtResource("1_x4r3j")
+_jumpSound = ExtResource("2_u71v6")
+_hurtSound = ExtResource("3_b5sd1")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1584336189]
+position = Vector2(0, -14)
+zoom = Vector2(3.405, 3.405)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2071484688]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_bp41e")
+
+[node name="BodyAnimations" type="AnimatedSprite2D" parent="." unique_id=1523607006]
+position = Vector2(0, -9)
+scale = Vector2(0.8, 0.8)
+sprite_frames = ExtResource("4_u71v6")
+animation = &"Jump"
+offset = Vector2(0, -2.545)
+script = ExtResource("3_u71v6")
+
+[node name="SFXAnims" type="AnimatedSprite2D" parent="." unique_id=384770343]
+visible = false
+position = Vector2(1, -8)
+sprite_frames = ExtResource("6_b5sd1")
+animation = &"Cloud"
+frame_progress = 0.9865069
+
+[connection signal="PlayerJump" from="." to="BodyAnimations" method="OnPLayerInAir"]
+[connection signal="PlayerMoved" from="." to="BodyAnimations" method="OnPlayerMoved"]

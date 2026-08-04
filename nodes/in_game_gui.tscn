@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://cditye7u1jjej"]
+
+[ext_resource type="Script" uid="uid://dg48jdb88hlgr" path="res://src/UI/Scoreboard.cs" id="1_0nys8"]
+[ext_resource type="Texture2D" uid="uid://bf8eo836ew7de" path="res://resources/AtlasTextures/coinatlas.tres" id="2_iakay"]
+[ext_resource type="LabelSettings" uid="uid://blhfa6g2gpivl" path="res://resources/UI/labelmainsettings.tres" id="2_t11mw"]
+[ext_resource type="Script" uid="uid://d008irpe2koet" path="res://src/UI/ContainerUI.cs" id="4_7o7cs"]
+[ext_resource type="PackedScene" uid="uid://duhft13kythpe" path="res://nodes/slot_ui.tscn" id="5_7an2h"]
+[ext_resource type="PackedScene" uid="uid://cc03yt1kq8j5d" path="res://nodes/item_node.tscn" id="6_inj5q"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=631618756 node_paths=PackedStringArray("_scoreLabel")]
+script = ExtResource("1_0nys8")
+_scoreLabel = NodePath("Control/Score/HBoxContainer/Label")
+
+[node name="Control" type="Control" parent="." unique_id=1948571042]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Score" type="Panel" parent="Control" unique_id=1555860438]
+layout_mode = 1
+offset_left = 10.0
+offset_top = 15.0
+offset_right = 157.0
+offset_bottom = 69.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Score" unique_id=1067064759]
+custom_maximum_size = Vector2(80, 50)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 6.28
+offset_top = -20.0
+offset_right = 46.28
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/Score/HBoxContainer" unique_id=310271339]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("2_iakay")
+
+[node name="Label" type="Label" parent="Control/Score/HBoxContainer" unique_id=663159131]
+custom_minimum_size = Vector2(1.06, 0)
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_t11mw")
+
+[node name="Panel" type="Panel" parent="Control" unique_id=2044815932 node_paths=PackedStringArray("_slotContainer", "ContainerUISlots")]
+visible = false
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 0
+offset_left = 323.0
+offset_top = 184.0
+offset_right = 363.0
+offset_bottom = 224.0
+script = ExtResource("4_7o7cs")
+_slotContainer = NodePath("item_container")
+SlotPrefab = ExtResource("5_7an2h")
+SlotItem = ExtResource("6_inj5q")
+ContainerUISlots = []
+
+[node name="item_container" type="GridContainer" parent="Control/Panel" unique_id=866174651]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+columns = 7

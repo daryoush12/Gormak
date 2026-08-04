@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Weapon" format=3 uid="uid://brkjrguc1yu0s"]
+
+[ext_resource type="Script" uid="uid://c8climen5yodx" path="res://src/Inventory/Weapon.cs" id="1_6nsqn"]
+[ext_resource type="Texture2D" uid="uid://dsiqioqxeod27" path="res://resources/AtlasTextures/Excalibur.tres" id="1_syqc1"]
+
+[resource]
+script = ExtResource("1_6nsqn")
+Name = "Excalibur"
+Icon = ExtResource("1_syqc1")
+metadata/_custom_type_script = "uid://c8climen5yodx"

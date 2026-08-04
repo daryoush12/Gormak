@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://ibxv4jl5jkfp"]
+
+[ext_resource type="Script" uid="uid://cq0kawpu46k82" path="res://src/Coin.cs" id="1_7e7yx"]
+[ext_resource type="AudioStream" uid="uid://bruungxo0rude" path="res://assets/sounds/coin.wav" id="2_5rw2d"]
+[ext_resource type="SpriteFrames" uid="uid://lg3prurwiy8x" path="res://resources/SpriteFrames/coin.tres" id="3_xp0s2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bp41e"]
+radius = 6.0
+
+[node name="g_coin" type="Area2D" unique_id=921897694 node_paths=PackedStringArray("_player")]
+script = ExtResource("1_7e7yx")
+_coinSound = ExtResource("2_5rw2d")
+_player = NodePath("AudioStreamPlayer2D")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=110124592]
+stream = ExtResource("2_5rw2d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1101284507]
+sprite_frames = ExtResource("3_xp0s2")
+autoplay = "default"
+frame = 6
+frame_progress = 0.9504538
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=452156525]
+process_mode = 3
+shape = SubResource("CircleShape2D_bp41e")
+
+[connection signal="body_entered" from="." to="." method="_on_coin_area_entered"]

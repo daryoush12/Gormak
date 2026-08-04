@@ -1,0 +1,46 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://bsitppkk0vyve"]
+
+[ext_resource type="Texture2D" uid="uid://cdoisxc4vfv53" path="res://assets/sprites/Characters/Double_Jump_Dust_5.png" id="1_nck3m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3bjgg"]
+atlas = ExtResource("1_nck3m")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqg3b"]
+atlas = ExtResource("1_nck3m")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o475h"]
+atlas = ExtResource("1_nck3m")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mwqk"]
+atlas = ExtResource("1_nck3m")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1d148"]
+atlas = ExtResource("1_nck3m")
+region = Rect2(128, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3bjgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqg3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o475h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mwqk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1d148")
+}],
+"loop": 1,
+"name": &"Cloud",
+"speed": 5.0
+}]
