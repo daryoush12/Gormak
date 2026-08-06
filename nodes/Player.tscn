@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://s6yf0f07j2v6" path="res://src/Player/AnimationManager.cs" id="3_u71v6"]
 [ext_resource type="SpriteFrames" uid="uid://c7rp2rcu4h6my" path="res://resources/SpriteFrames/dude.tres" id="4_u71v6"]
 [ext_resource type="SpriteFrames" uid="uid://bsitppkk0vyve" path="res://resources/SpriteFrames/dude_sfx.tres" id="6_b5sd1"]
+[ext_resource type="Script" uid="uid://cgxn6hw3kq873" path="res://src/Player/PlayerInventoryManager.cs" id="7_1ockd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bp41e"]
 size = Vector2(12, 18)
@@ -39,6 +40,16 @@ position = Vector2(1, -8)
 sprite_frames = ExtResource("6_b5sd1")
 animation = &"Cloud"
 frame_progress = 0.9865069
+
+[node name="Hotbar" type="Node2D" parent="." unique_id=144800887 node_paths=PackedStringArray("_actor") groups=["player_inventory_hotbar"]]
+script = ExtResource("7_1ockd")
+_actor = NodePath("..")
+
+[node name="Inventory" type="Node2D" parent="." unique_id=349954130 node_paths=PackedStringArray("_actor") groups=["player_inventory"]]
+script = ExtResource("7_1ockd")
+_actor = NodePath("..")
+MaxSlots = 24
+InteractKey = "player_inventory"
 
 [connection signal="PlayerJump" from="." to="BodyAnimations" method="OnPLayerInAir"]
 [connection signal="PlayerMoved" from="." to="BodyAnimations" method="OnPlayerMoved"]

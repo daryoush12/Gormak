@@ -6,5 +6,8 @@
 [resource]
 script = ExtResource("1_6nsqn")
 Name = "Excalibur"
+Description = "It is said that legendary warrior wielded this blade to defeat demon lord. Who knows where they are now."
+IsStackable = false
 Icon = ExtResource("1_syqc1")
+Cost = 9500
 metadata/_custom_type_script = "uid://c8climen5yodx"

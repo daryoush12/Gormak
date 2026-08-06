@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://8g1ruprgj83i"]
+
+[ext_resource type="Script" uid="uid://d008irpe2koet" path="res://src/UI/ContainerUI.cs" id="1_e1yp4"]
+[ext_resource type="PackedScene" uid="uid://duhft13kythpe" path="res://nodes/slot_ui.tscn" id="2_svn5g"]
+[ext_resource type="PackedScene" uid="uid://cc03yt1kq8j5d" path="res://nodes/item_node.tscn" id="3_davmd"]
+[ext_resource type="LabelSettings" uid="uid://blhfa6g2gpivl" path="res://resources/UI/labelmainsettings.tres" id="4_odo68"]
+
+[node name="lootable_container_ui" type="Panel" unique_id=1928986829 node_paths=PackedStringArray("SlotContainer")]
+custom_minimum_size = Vector2(400, 400)
+offset_left = 131.0
+offset_top = 81.0
+offset_right = 531.0
+offset_bottom = 481.0
+script = ExtResource("1_e1yp4")
+SlotContainer = NodePath("c_container")
+SlotPrefab = ExtResource("2_svn5g")
+SlotItem = ExtResource("3_davmd")
+SlotItemUiPrefab = ExtResource("3_davmd")
+
+[node name="Button" type="Button" parent="." unique_id=1585726741]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 50.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Button" unique_id=278086675]
+layout_mode = 0
+offset_right = 399.0
+offset_bottom = 46.0
+text = "Chest"
+label_settings = ExtResource("4_odo68")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="c_container" type="GridContainer" parent="." unique_id=601606943]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -330.0
+offset_right = -10.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 0
+offset_transform_enabled = true
+columns = 6

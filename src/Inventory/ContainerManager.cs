@@ -5,12 +5,8 @@ using Godot.Collections;
 
 namespace projecttamasuccessor.Inventory
 {
-    public partial class ContainerManager : Node2D
+    public partial class ContainerManager : BaseContainer
     {
-        [Export] public Array<InventorySlot> Items { get; set; } = new Array<InventorySlot>();
-        [Export] public int MaxSlots { get; set; } = 10;
-        [Export] public string InteractKey {get; set;}
-
         [Export] public Control InteractMarker {get; set;}
 
         private bool canOpen = false;
@@ -21,13 +17,14 @@ namespace projecttamasuccessor.Inventory
 
         public override void _Ready()
         {
-            Items.Resize(MaxSlots);
+            base._Ready();
+
             _eventBus = GetNode<ContainerEventBus>("/root/ContainerEventBus");
         }
 
         public override void _PhysicsProcess(double delta)
         {
-            if(Input.IsActionJustReleased(InteractKey)){
+            if(canOpen && Input.IsActionJustReleased(InteractKey)){
                 
                 Open(_currentActor);
             }
@@ -50,6 +47,7 @@ namespace projecttamasuccessor.Inventory
                 canOpen = false;
                 _currentActor = null;
                 InteractMarker.Visible = false;
+                _eventBus.EmitSignal(ContainerEventBus.SignalName.ContainerClosed, this, actor);
             }
         }
 
@@ -57,9 +55,9 @@ namespace projecttamasuccessor.Inventory
         {
             if(isOpen){
                 isOpen = false;
+                _eventBus.EmitSignal(ContainerEventBus.SignalName.ContainerClosed, this, actor);
                 return; 
             }
-            Debug.WriteLine("Open chest");
             isOpen = true;
             _eventBus.EmitSignal(ContainerEventBus.SignalName.ContainerOpened, this, actor);
         }

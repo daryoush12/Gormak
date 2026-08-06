@@ -2,11 +2,14 @@ using System;
 using System.Diagnostics;
 using Godot;
 using projecttamasuccessor.Constants;
+using projecttamasuccessor.Inventory;
 using static Godot.TextServer;
 namespace projecttamasuccessor.Player
 {
     public partial class PlayerManager : CharacterBody2D
     {
+        private const string PLAYER_JUMP_ACTION = "player_jump";
+
         [Export] private int MAX_HEALTH = 100;
         [Export] private int MOVEMENT_MODIFIER = 150;
         [Export] private int JUMP_MODIFIER = -350;
@@ -51,7 +54,7 @@ namespace projecttamasuccessor.Player
 
         private void HandleMechanics()
         {
-            if (Input.IsActionJustPressed("player_jump") && this.IsOnFloor())
+            if (Input.IsActionJustPressed(PLAYER_JUMP_ACTION) && this.IsOnFloor())
             {
                _velY = JUMP_MODIFIER;
                 SFXManager._sfxmanager.PlaySFX(_jumpSound); 

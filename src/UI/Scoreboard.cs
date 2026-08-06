@@ -36,5 +36,7 @@ namespace projecttamasuccessor.UI
               _score += amount;
              _scoreLabel.Text = $"{_score}";
         }
+
+        
     }
 }

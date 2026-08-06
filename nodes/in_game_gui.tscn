@@ -2,31 +2,35 @@
 
 [ext_resource type="Script" uid="uid://dg48jdb88hlgr" path="res://src/UI/Scoreboard.cs" id="1_0nys8"]
 [ext_resource type="Texture2D" uid="uid://bf8eo836ew7de" path="res://resources/AtlasTextures/coinatlas.tres" id="2_iakay"]
+[ext_resource type="StyleBox" uid="uid://ckr5t3m0vmums" path="res://resources/UI/item_preview.tres" id="2_o3cn2"]
 [ext_resource type="LabelSettings" uid="uid://blhfa6g2gpivl" path="res://resources/UI/labelmainsettings.tres" id="2_t11mw"]
-[ext_resource type="Script" uid="uid://d008irpe2koet" path="res://src/UI/ContainerUI.cs" id="4_7o7cs"]
+[ext_resource type="Script" uid="uid://ewg2byjcvv7j" path="res://src/UI/PlayerInventoryUI.cs" id="4_7an2h"]
 [ext_resource type="PackedScene" uid="uid://duhft13kythpe" path="res://nodes/slot_ui.tscn" id="5_7an2h"]
 [ext_resource type="PackedScene" uid="uid://cc03yt1kq8j5d" path="res://nodes/item_node.tscn" id="6_inj5q"]
+[ext_resource type="PackedScene" uid="uid://8g1ruprgj83i" path="res://nodes/lootable_container_ui.tscn" id="7_7an2h"]
+[ext_resource type="Script" uid="uid://ci8o25s0vshkd" path="res://src/UI/PlayerHotbarUI.cs" id="8_inj5q"]
+[ext_resource type="LabelSettings" uid="uid://dtwwbl68sp3t0" path="res://resources/UI/label_title.tres" id="10_v74vv"]
+[ext_resource type="Texture2D" uid="uid://dsiqioqxeod27" path="res://resources/AtlasTextures/Excalibur.tres" id="11_kgjxa"]
+[ext_resource type="LabelSettings" uid="uid://dgef04s0kstn1" path="res://resources/UI/stat_label.tres" id="12_ac4r1"]
+[ext_resource type="LabelSettings" uid="uid://t2c1jy8m1eq8" path="res://resources/UI/l_description.tres" id="12_kgjxa"]
+[ext_resource type="Texture2D" uid="uid://cb7eu8blo2ero" path="res://resources/AtlasTextures/icon_attack.tres" id="12_txffy"]
+[ext_resource type="Texture2D" uid="uid://d2mfajmvxmj24" path="res://resources/AtlasTextures/icon_arm.tres" id="14_pb8rw"]
+[ext_resource type="Texture2D" uid="uid://16tbiboixw4x" path="res://resources/AtlasTextures/icon_boots.tres" id="15_8od6y"]
+[ext_resource type="Texture2D" uid="uid://1rmj215fvgx" path="res://resources/AtlasTextures/icon_mana.tres" id="16_41kj7"]
+[ext_resource type="Texture2D" uid="uid://cwuponctkctlr" path="res://resources/AtlasTextures/icon_potion.tres" id="17_ooh8b"]
+[ext_resource type="Texture2D" uid="uid://culswx0bmlcee" path="res://resources/AtlasTextures/icon_gold.tres" id="18_o0uy0"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=631618756 node_paths=PackedStringArray("_scoreLabel")]
 script = ExtResource("1_0nys8")
-_scoreLabel = NodePath("Control/Score/HBoxContainer/Label")
+_scoreLabel = NodePath("Score/HBoxContainer/Label")
 
-[node name="Control" type="Control" parent="." unique_id=1948571042]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Score" type="Panel" parent="Control" unique_id=1555860438]
-layout_mode = 1
+[node name="Score" type="Panel" parent="." unique_id=1555860438]
 offset_left = 10.0
 offset_top = 15.0
 offset_right = 157.0
 offset_bottom = 69.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/Score" unique_id=1067064759]
+[node name="HBoxContainer" type="HBoxContainer" parent="Score" unique_id=1067064759]
 custom_maximum_size = Vector2(80, 50)
 layout_mode = 1
 anchors_preset = 4
@@ -38,41 +42,421 @@ offset_right = 46.28
 offset_bottom = 20.0
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control/Score/HBoxContainer" unique_id=310271339]
+[node name="TextureRect" type="TextureRect" parent="Score/HBoxContainer" unique_id=310271339]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("2_iakay")
 
-[node name="Label" type="Label" parent="Control/Score/HBoxContainer" unique_id=663159131]
+[node name="Label" type="Label" parent="Score/HBoxContainer" unique_id=663159131]
 custom_minimum_size = Vector2(1.06, 0)
 layout_mode = 2
 text = "0"
 label_settings = ExtResource("2_t11mw")
 
-[node name="Panel" type="Panel" parent="Control" unique_id=2044815932 node_paths=PackedStringArray("_slotContainer", "ContainerUISlots")]
-visible = false
-custom_minimum_size = Vector2(400, 400)
-layout_mode = 0
-offset_left = 323.0
-offset_top = 184.0
-offset_right = 363.0
-offset_bottom = 224.0
-script = ExtResource("4_7o7cs")
-_slotContainer = NodePath("item_container")
-SlotPrefab = ExtResource("5_7an2h")
+[node name="hotbar" type="Panel" parent="." unique_id=484554557 node_paths=PackedStringArray("_slotContainer", "ContainerUISlots")]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 223.0
+offset_top = -100.0
+offset_right = -193.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("8_inj5q")
+_slotContainer = NodePath("HBoxContainer")
 SlotItem = ExtResource("6_inj5q")
+SlotPrefab = ExtResource("5_7an2h")
+SlotItemUiPrefab = ExtResource("6_inj5q")
 ContainerUISlots = []
 
-[node name="item_container" type="GridContainer" parent="Control/Panel" unique_id=866174651]
+[node name="HBoxContainer" type="HBoxContainer" parent="hotbar" unique_id=1814103576]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 12.0
+offset_right = 573.0
+offset_bottom = 67.0
+
+[node name="slot_ui" parent="hotbar/HBoxContainer" unique_id=1777112882 instance=ExtResource("5_7an2h")]
+layout_mode = 2
+
+[node name="slot_ui2" parent="hotbar/HBoxContainer" unique_id=716383530 instance=ExtResource("5_7an2h")]
+layout_mode = 2
+
+[node name="slot_ui3" parent="hotbar/HBoxContainer" unique_id=1783683543 instance=ExtResource("5_7an2h")]
+layout_mode = 2
+
+[node name="slot_ui4" parent="hotbar/HBoxContainer" unique_id=323000816 instance=ExtResource("5_7an2h")]
+layout_mode = 2
+
+[node name="slot_ui5" parent="hotbar/HBoxContainer" unique_id=440704412 instance=ExtResource("5_7an2h")]
+layout_mode = 2
+
+[node name="slot_ui6" parent="hotbar/HBoxContainer" unique_id=880732826 instance=ExtResource("5_7an2h")]
+layout_mode = 2
+
+[node name="slot_ui7" parent="hotbar/HBoxContainer" unique_id=458737726 instance=ExtResource("5_7an2h")]
+layout_mode = 2
+
+[node name="slot_ui8" parent="hotbar/HBoxContainer" unique_id=1413529753 instance=ExtResource("5_7an2h")]
+layout_mode = 2
+
+[node name="slot_ui9" parent="hotbar/HBoxContainer" unique_id=1503045108 instance=ExtResource("5_7an2h")]
+layout_mode = 2
+
+[node name="slot_ui10" parent="hotbar/HBoxContainer" unique_id=2061372319 instance=ExtResource("5_7an2h")]
+layout_mode = 2
+
+[node name="player_inventory" type="Panel" parent="." unique_id=185615341 node_paths=PackedStringArray("_slotContainer", "ContainerUISlots")]
+visible = false
+custom_minimum_size = Vector2(400, 400)
+offset_left = 573.0
+offset_top = 77.0
+offset_right = 973.0
+offset_bottom = 477.0
+script = ExtResource("4_7an2h")
+_slotContainer = NodePath("ScrollContainer/item_container")
+SlotItem = ExtResource("6_inj5q")
+SlotPrefab = ExtResource("5_7an2h")
+SlotItemUiPrefab = ExtResource("6_inj5q")
+ContainerUISlots = []
+
+[node name="DragButton" type="Button" parent="player_inventory" unique_id=1064141103]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 50.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="player_inventory/DragButton" unique_id=519045517]
+layout_mode = 0
+offset_right = 399.0
+offset_bottom = 46.0
+text = "Inventory"
+label_settings = ExtResource("2_t11mw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="player_inventory" unique_id=1615230242]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 10.0
+offset_top = 58.0
+offset_right = -10.0
+offset_bottom = 388.97498
+grow_horizontal = 2
+
+[node name="item_container" type="GridContainer" parent="player_inventory/ScrollContainer" unique_id=1768177713]
+layout_mode = 2
+offset_transform_enabled = true
+columns = 6
+
+[node name="lootable_container_ui" parent="." unique_id=1928986829 instance=ExtResource("7_7an2h")]
+
+[node name="ItemPreview" type="Panel" parent="." unique_id=292654532]
+offset_right = 182.0
+offset_bottom = 241.0
+theme_override_styles/panel = ExtResource("2_o3cn2")
+
+[node name="Panel" type="Panel" parent="ItemPreview" unique_id=117037897]
+layout_mode = 0
+offset_right = 183.0
+offset_bottom = 24.0
+
+[node name="Label" type="Label" parent="ItemPreview/Panel" unique_id=1194061053]
+layout_mode = 0
+offset_right = 182.0
+offset_bottom = 23.0
+text = "Excalibur"
+label_settings = ExtResource("10_v74vv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ItemPreview" unique_id=1904559338]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = -10.0
-offset_bottom = -10.0
+offset_top = 27.0
 grow_horizontal = 2
 grow_vertical = 2
-offset_transform_enabled = true
-columns = 7
+
+[node name="Control" type="Control" parent="ItemPreview/VBoxContainer" unique_id=1895612192]
+layout_mode = 2
+
+[node name="preview_icon" type="PanelContainer" parent="ItemPreview/VBoxContainer/Control" unique_id=603992741]
+custom_minimum_size = Vector2(60, 60.18)
+propagate_maximum_size = false
+layout_mode = 0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 65.0
+offset_bottom = 64.18
+
+[node name="TextureRect" type="TextureRect" parent="ItemPreview/VBoxContainer/Control/preview_icon" unique_id=920067148]
+layout_mode = 2
+texture = ExtResource("11_kgjxa")
+
+[node name="preview_attributes" type="Panel" parent="ItemPreview/VBoxContainer/Control" unique_id=756510597]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 5.0
+offset_right = 176.0
+offset_bottom = 64.0
+
+[node name="GridContainer" type="GridContainer" parent="ItemPreview/VBoxContainer/Control/preview_attributes" unique_id=1022394548]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="Control" type="Control" parent="ItemPreview/VBoxContainer/Control/preview_attributes/GridContainer" unique_id=346950712]
+custom_minimum_size = Vector2(30, 20)
+propagate_maximum_size = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ItemPreview/VBoxContainer/Control/preview_attributes/GridContainer/Control" unique_id=1672442017]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -13.0
+offset_top = -3.5
+offset_bottom = 3.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "99"
+label_settings = ExtResource("12_ac4r1")
+
+[node name="TextureRect" type="TextureRect" parent="ItemPreview/VBoxContainer/Control/preview_attributes/GridContainer/Control" unique_id=933629120]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -8.5
+offset_right = 17.0
+offset_bottom = 8.5
+grow_vertical = 2
+texture = ExtResource("12_txffy")
+
+[node name="Control2" type="Control" parent="ItemPreview/VBoxContainer/Control/preview_attributes/GridContainer" unique_id=431909625]
+custom_minimum_size = Vector2(30, 20)
+propagate_maximum_size = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ItemPreview/VBoxContainer/Control/preview_attributes/GridContainer/Control2" unique_id=347216409]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -13.0
+offset_top = -3.5
+offset_bottom = 3.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "99"
+label_settings = ExtResource("12_ac4r1")
+
+[node name="TextureRect" type="TextureRect" parent="ItemPreview/VBoxContainer/Control/preview_attributes/GridContainer/Control2" unique_id=2079768732]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -8.5
+offset_right = 17.0
+offset_bottom = 8.5
+grow_vertical = 2
+texture = ExtResource("14_pb8rw")
+
+[node name="Control3" type="Control" parent="ItemPreview/VBoxContainer/Control/preview_attributes/GridContainer" unique_id=2139598816]
+custom_minimum_size = Vector2(30, 20)
+propagate_maximum_size = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ItemPreview/VBoxContainer/Control/preview_attributes/GridContainer/Control3" unique_id=1908512488]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -13.0
+offset_top = -3.5
+offset_bottom = 3.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "99"
+label_settings = ExtResource("12_ac4r1")
+
+[node name="TextureRect" type="TextureRect" parent="ItemPreview/VBoxContainer/Control/preview_attributes/GridContainer/Control3" unique_id=1572228211]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -8.5
+offset_right = 17.0
+offset_bottom = 8.5
+grow_vertical = 2
+texture = ExtResource("15_8od6y")
+
+[node name="Control4" type="Control" parent="ItemPreview/VBoxContainer/Control/preview_attributes/GridContainer" unique_id=97134732]
+custom_minimum_size = Vector2(30, 20)
+propagate_maximum_size = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ItemPreview/VBoxContainer/Control/preview_attributes/GridContainer/Control4" unique_id=221895125]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -13.0
+offset_top = -3.5
+offset_bottom = 3.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "99"
+label_settings = ExtResource("12_ac4r1")
+
+[node name="TextureRect" type="TextureRect" parent="ItemPreview/VBoxContainer/Control/preview_attributes/GridContainer/Control4" unique_id=1391057979]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -8.5
+offset_right = 17.0
+offset_bottom = 8.5
+grow_vertical = 2
+texture = ExtResource("16_41kj7")
+
+[node name="Control5" type="Control" parent="ItemPreview/VBoxContainer/Control/preview_attributes/GridContainer" unique_id=407158656]
+custom_minimum_size = Vector2(30, 20)
+propagate_maximum_size = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ItemPreview/VBoxContainer/Control/preview_attributes/GridContainer/Control5" unique_id=1864071417]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -13.0
+offset_top = -3.5
+offset_bottom = 3.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "99"
+label_settings = ExtResource("12_ac4r1")
+
+[node name="TextureRect" type="TextureRect" parent="ItemPreview/VBoxContainer/Control/preview_attributes/GridContainer/Control5" unique_id=1241039121]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -8.5
+offset_right = 17.0
+offset_bottom = 8.5
+grow_vertical = 2
+texture = ExtResource("17_ooh8b")
+
+[node name="Control6" type="Control" parent="ItemPreview/VBoxContainer/Control/preview_attributes/GridContainer" unique_id=939974207]
+custom_minimum_size = Vector2(30, 20)
+propagate_maximum_size = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ItemPreview/VBoxContainer/Control/preview_attributes/GridContainer/Control6" unique_id=1380325177]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -13.0
+offset_top = -3.5
+offset_bottom = 3.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "99"
+label_settings = ExtResource("12_ac4r1")
+
+[node name="TextureRect" type="TextureRect" parent="ItemPreview/VBoxContainer/Control/preview_attributes/GridContainer/Control6" unique_id=417255577]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -8.5
+offset_right = 17.0
+offset_bottom = 8.5
+grow_vertical = 2
+texture = ExtResource("18_o0uy0")
+
+[node name="Control2" type="Control" parent="ItemPreview/VBoxContainer" unique_id=39776306]
+layout_mode = 2
+
+[node name="preview_description" type="Label" parent="ItemPreview/VBoxContainer/Control2" unique_id=57885497]
+custom_minimum_size = Vector2(162, 99)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 73.0
+offset_right = 172.0
+offset_bottom = 172.0
+text = "It is said that legendary warrior wielded this blade to defeat demon lord. Who knows where they are now."
+label_settings = ExtResource("12_kgjxa")
+autowrap_mode = 2
+text_overrun_behavior = 3
+
+[node name="preview_cost" type="Control" parent="ItemPreview" unique_id=620362481]
+custom_minimum_size = Vector2(30, 20)
+propagate_maximum_size = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -42.0
+offset_top = -21.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="ItemPreview/preview_cost" unique_id=2091883570]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 14.55
+offset_top = -3.5
+offset_right = 32.999996
+offset_bottom = 3.5
+grow_vertical = 2
+text = "9999"
+label_settings = ExtResource("12_ac4r1")
+horizontal_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="ItemPreview/preview_cost" unique_id=2004222390]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -8.5
+offset_right = 17.0
+offset_bottom = 8.5
+grow_vertical = 2
+texture = ExtResource("2_iakay")

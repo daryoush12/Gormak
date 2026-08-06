@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://btavdlh5agl3k"]
+
+[ext_resource type="Script" uid="uid://bh5mnegqlyw8y" path="res://src/Inventory/ContainerManager.cs" id="1_b4svq"]
+[ext_resource type="Script" uid="uid://d2m206ec5l27y" path="res://src/Inventory/InventorySlot.cs" id="2_4ciom"]
+[ext_resource type="Resource" uid="uid://brkjrguc1yu0s" path="res://resources/Items/Excalibur.tres" id="3_gv7nt"]
+[ext_resource type="FontFile" uid="uid://b8v4aswnmtkrq" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="4_yphot"]
+[ext_resource type="SpriteFrames" uid="uid://dvyoucxi5agxy" path="res://resources/SpriteFrames/chest.tres" id="5_jjtct"]
+
+[sub_resource type="Resource" id="Resource_jw7i3"]
+script = ExtResource("2_4ciom")
+Item = ExtResource("3_gv7nt")
+Quantity = 1
+metadata/_custom_type_script = "uid://d2m206ec5l27y"
+
+[sub_resource type="Resource" id="Resource_7an2h"]
+script = ExtResource("2_4ciom")
+metadata/_custom_type_script = "uid://d2m206ec5l27y"
+
+[sub_resource type="Resource" id="Resource_inj5q"]
+script = ExtResource("2_4ciom")
+metadata/_custom_type_script = "uid://d2m206ec5l27y"
+
+[sub_resource type="Resource" id="Resource_o3cn2"]
+script = ExtResource("2_4ciom")
+metadata/_custom_type_script = "uid://d2m206ec5l27y"
+
+[sub_resource type="Resource" id="Resource_7q2ni"]
+script = ExtResource("2_4ciom")
+metadata/_custom_type_script = "uid://d2m206ec5l27y"
+
+[sub_resource type="Resource" id="Resource_v74vv"]
+script = ExtResource("2_4ciom")
+metadata/_custom_type_script = "uid://d2m206ec5l27y"
+
+[sub_resource type="Resource" id="Resource_kgjxa"]
+script = ExtResource("2_4ciom")
+metadata/_custom_type_script = "uid://d2m206ec5l27y"
+
+[sub_resource type="Resource" id="Resource_txffy"]
+script = ExtResource("2_4ciom")
+metadata/_custom_type_script = "uid://d2m206ec5l27y"
+
+[sub_resource type="LabelSettings" id="LabelSettings_bp41e"]
+font = ExtResource("4_yphot")
+font_size = 6
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bp41e"]
+radius = 7.071068
+
+[node name="Chest" type="StaticBody2D" unique_id=1335953622 node_paths=PackedStringArray("InteractMarker") groups=["general_containers"]]
+process_mode = 3
+script = ExtResource("1_b4svq")
+InteractMarker = NodePath("Interact")
+Items = Array[ExtResource("2_4ciom")]([SubResource("Resource_jw7i3"), SubResource("Resource_7an2h"), SubResource("Resource_inj5q"), SubResource("Resource_o3cn2"), SubResource("Resource_7q2ni"), SubResource("Resource_v74vv"), SubResource("Resource_kgjxa"), SubResource("Resource_txffy")])
+InteractKey = "player_interact"
+
+[node name="Interact" type="Panel" parent="." unique_id=1366580517]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 9.0
+offset_top = -16.0
+offset_right = 21.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_pivot = Vector2(0.155, 0)
+
+[node name="Label" type="Label" parent="Interact" unique_id=1831169840]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "E"
+label_settings = SubResource("LabelSettings_bp41e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1946447589]
+sprite_frames = ExtResource("5_jjtct")
+animation = &"close_sequence"
+autoplay = "default"
+frame_progress = 0.4016401
+
+[node name="Area2D" type="Area2D" parent="." unique_id=518557520]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1370304826]
+position = Vector2(0, 11)
+shape = SubResource("CircleShape2D_bp41e")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

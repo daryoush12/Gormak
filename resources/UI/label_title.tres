@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://dtwwbl68sp3t0"]
+
+[ext_resource type="FontFile" uid="uid://b8v4aswnmtkrq" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_xx2et"]
+
+[resource]
+font = ExtResource("1_xx2et")
+font_size = 11
