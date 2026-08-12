@@ -14,6 +14,9 @@ namespace projecttamasuccessor.UI
 			if (slot.Item.IsStackable && slot.Quantity > 1)
 			{
 				QuantityLabel.Text = string.Format("{0}", slot.Quantity.ToString());
+				QuantityLabel.Visible = true;
+				this.Texture = slot.Item.Icon;
+				return;
 			}
 
 			SetAnchorsAndOffsetsPreset(LayoutPreset.Center, LayoutPresetMode.KeepSize, 2);

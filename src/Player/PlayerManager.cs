@@ -24,11 +24,22 @@ namespace projecttamasuccessor.Player
 
         // Get the gravity from the project settings to match the engine physics
         public float Gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
-        public int Health { get { return _health; }}
+        public int Health { get { return _health; } }
         private float _velX;
         private float _velY;
+        [Export] private Node2D _sword;
 
-        [Signal] 
+        private bool _isAttacking = false;
+        private double _idleTime = 0.0;
+
+        // Configurable floating speeds and ranges
+        private float _orbitSpeedX = 2.0f;
+        private float _orbitSpeedY = 4.0f;
+        private float _radiusX = 15.0f;
+        private float _radiusY = 8.0f;
+        private float _hoverHeightOffset = -20.0f; // Floats slightly above player center
+        private float _direction;
+        [Signal]
         public delegate void PlayerMovedEventHandler(float direction);
 
         [Signal]
@@ -37,7 +48,7 @@ namespace projecttamasuccessor.Player
 
         public override void _Ready()
         {
-            
+
         }
 
         public void Damage(int amount)
@@ -56,34 +67,35 @@ namespace projecttamasuccessor.Player
         {
             if (Input.IsActionJustPressed(PLAYER_JUMP_ACTION) && this.IsOnFloor())
             {
-               _velY = JUMP_MODIFIER;
-                SFXManager._sfxmanager.PlaySFX(_jumpSound); 
+                _velY = JUMP_MODIFIER;
+                SFXManager._sfxmanager.PlaySFX(_jumpSound);
             }
 
-            var direction = Input.GetAxis("ui_left", "ui_right");
-              
-            if (direction != 0)
+            _direction = Input.GetAxis("ui_left", "ui_right");
+       
+            if (_direction != 0)
             {
-                _velX = direction * MOVEMENT_MODIFIER;
-                this.EmitSignal(SignalName.PlayerMoved, [direction]);
+                _velX = _direction * MOVEMENT_MODIFIER;
+                this.EmitSignal(SignalName.PlayerMoved, [_direction]);
             }
             else
             {
                 Velocity = new Vector2(0, Velocity.Y);
-                this.EmitSignal(SignalName.PlayerMoved, [direction]);
-            }   
+                this.EmitSignal(SignalName.PlayerMoved, [_direction]);
+            }
         }
 
         // Called every frame. 'delta' is the elapsed time since the previous frame.
         public override void _Process(double delta)
         {
-            if(!this.IsOnFloor())
+            if (!this.IsOnFloor())
             {
                 _velY = Velocity.Y + ((float)(delta * Gravity));
                 this.EmitSignal(SignalName.PlayerJump, Mathf.Sign(_velY));
             }
             HandleMechanics();
             MoveAndSlide();
+            HandleTelekinesis(delta);
             Velocity = new Vector2(_velX, _velY);
         }
     }

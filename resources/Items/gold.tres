@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="InventoryResource" format=3 uid="uid://oyfloc7g8yij"]
+
+[ext_resource type="Script" uid="uid://dyklnvjegfw1o" path="res://src/Inventory/InventoryResource.cs" id="1_hxrt4"]
+[ext_resource type="Texture2D" uid="uid://culswx0bmlcee" path="res://resources/AtlasTextures/icon_gold.tres" id="1_mq87b"]
+
+[resource]
+script = ExtResource("1_hxrt4")
+Name = "Gold"
+Description = "Gold bar. It is extremely valuable, and coveted by merchants."
+Icon = ExtResource("1_mq87b")
+Cost = 200
+metadata/_custom_type_script = "uid://dyklnvjegfw1o"

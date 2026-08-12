@@ -40,12 +40,14 @@ namespace projecttamasuccessor.UI
 
         private void DisplayContainer(BaseContainer container, Node2D actor)
         {
+       
             Debug.WriteLine(container);
             // Only open lootable containers.
             if (!container.IsInGroup("general_containers")) return;
             if (this.Visible)
             {
                 this.Visible = false;
+                _currentContainer = 0;
                 return;
             }else {
                 _currentContainer = container.GetInstanceId();

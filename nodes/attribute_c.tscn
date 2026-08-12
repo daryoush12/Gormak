@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://ckn3jf442iec4"]
+
+[ext_resource type="LabelSettings" uid="uid://dgef04s0kstn1" path="res://resources/UI/stat_label.tres" id="1_btkee"]
+[ext_resource type="Texture2D" uid="uid://cb7eu8blo2ero" path="res://resources/AtlasTextures/icon_attack.tres" id="2_fl6et"]
+
+[node name="attribute_c" type="Control" unique_id=291729725]
+custom_minimum_size = Vector2(30, 20)
+propagate_maximum_size = true
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Label" type="Label" parent="." unique_id=1366489618]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -13.0
+offset_top = -3.5
+offset_bottom = 3.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "99"
+label_settings = ExtResource("1_btkee")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2032956289]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -8.5
+offset_right = 17.0
+offset_bottom = 8.5
+grow_vertical = 2
+texture = ExtResource("2_fl6et")

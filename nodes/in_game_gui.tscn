@@ -9,11 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://cc03yt1kq8j5d" path="res://nodes/item_node.tscn" id="6_inj5q"]
 [ext_resource type="PackedScene" uid="uid://8g1ruprgj83i" path="res://nodes/lootable_container_ui.tscn" id="7_7an2h"]
 [ext_resource type="Script" uid="uid://ci8o25s0vshkd" path="res://src/UI/PlayerHotbarUI.cs" id="8_inj5q"]
+[ext_resource type="Script" uid="uid://myqftnsr0vqg" path="res://src/UI/ItemPreviewUI.cs" id="10_ooh8b"]
 [ext_resource type="LabelSettings" uid="uid://dtwwbl68sp3t0" path="res://resources/UI/label_title.tres" id="10_v74vv"]
 [ext_resource type="Texture2D" uid="uid://dsiqioqxeod27" path="res://resources/AtlasTextures/Excalibur.tres" id="11_kgjxa"]
+[ext_resource type="PackedScene" uid="uid://ckn3jf442iec4" path="res://nodes/attribute_c.tscn" id="11_o0uy0"]
 [ext_resource type="LabelSettings" uid="uid://dgef04s0kstn1" path="res://resources/UI/stat_label.tres" id="12_ac4r1"]
 [ext_resource type="LabelSettings" uid="uid://t2c1jy8m1eq8" path="res://resources/UI/l_description.tres" id="12_kgjxa"]
-[ext_resource type="Texture2D" uid="uid://cb7eu8blo2ero" path="res://resources/AtlasTextures/icon_attack.tres" id="12_txffy"]
 [ext_resource type="Texture2D" uid="uid://d2mfajmvxmj24" path="res://resources/AtlasTextures/icon_arm.tres" id="14_pb8rw"]
 [ext_resource type="Texture2D" uid="uid://16tbiboixw4x" path="res://resources/AtlasTextures/icon_boots.tres" id="15_8od6y"]
 [ext_resource type="Texture2D" uid="uid://1rmj215fvgx" path="res://resources/AtlasTextures/icon_mana.tres" id="16_41kj7"]
@@ -78,36 +79,6 @@ offset_top = 12.0
 offset_right = 573.0
 offset_bottom = 67.0
 
-[node name="slot_ui" parent="hotbar/HBoxContainer" unique_id=1777112882 instance=ExtResource("5_7an2h")]
-layout_mode = 2
-
-[node name="slot_ui2" parent="hotbar/HBoxContainer" unique_id=716383530 instance=ExtResource("5_7an2h")]
-layout_mode = 2
-
-[node name="slot_ui3" parent="hotbar/HBoxContainer" unique_id=1783683543 instance=ExtResource("5_7an2h")]
-layout_mode = 2
-
-[node name="slot_ui4" parent="hotbar/HBoxContainer" unique_id=323000816 instance=ExtResource("5_7an2h")]
-layout_mode = 2
-
-[node name="slot_ui5" parent="hotbar/HBoxContainer" unique_id=440704412 instance=ExtResource("5_7an2h")]
-layout_mode = 2
-
-[node name="slot_ui6" parent="hotbar/HBoxContainer" unique_id=880732826 instance=ExtResource("5_7an2h")]
-layout_mode = 2
-
-[node name="slot_ui7" parent="hotbar/HBoxContainer" unique_id=458737726 instance=ExtResource("5_7an2h")]
-layout_mode = 2
-
-[node name="slot_ui8" parent="hotbar/HBoxContainer" unique_id=1413529753 instance=ExtResource("5_7an2h")]
-layout_mode = 2
-
-[node name="slot_ui9" parent="hotbar/HBoxContainer" unique_id=1503045108 instance=ExtResource("5_7an2h")]
-layout_mode = 2
-
-[node name="slot_ui10" parent="hotbar/HBoxContainer" unique_id=2061372319 instance=ExtResource("5_7an2h")]
-layout_mode = 2
-
 [node name="player_inventory" type="Panel" parent="." unique_id=185615341 node_paths=PackedStringArray("_slotContainer", "ContainerUISlots")]
 visible = false
 custom_minimum_size = Vector2(400, 400)
@@ -155,10 +126,18 @@ columns = 6
 
 [node name="lootable_container_ui" parent="." unique_id=1928986829 instance=ExtResource("7_7an2h")]
 
-[node name="ItemPreview" type="Panel" parent="." unique_id=292654532]
-offset_right = 182.0
-offset_bottom = 241.0
+[node name="ItemPreview" type="Panel" parent="." unique_id=292654532 node_paths=PackedStringArray("NameLabel", "DescriptionLabel", "IconHolder", "AttributesContainer")]
+offset_left = 569.0
+offset_top = 136.0
+offset_right = 751.0
+offset_bottom = 377.0
 theme_override_styles/panel = ExtResource("2_o3cn2")
+script = ExtResource("10_ooh8b")
+NameLabel = NodePath("Panel/Label")
+DescriptionLabel = NodePath("VBoxContainer/Control2/preview_description")
+IconHolder = NodePath("VBoxContainer/Control/preview_icon/TextureRect")
+AttributesContainer = NodePath("VBoxContainer/Control/preview_attributes/GridContainer")
+AttributePrefab = ExtResource("11_o0uy0")
 
 [node name="Panel" type="Panel" parent="ItemPreview" unique_id=117037897]
 layout_mode = 0
@@ -219,36 +198,8 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 3
 
-[node name="Control" type="Control" parent="ItemPreview/VBoxContainer/Control/preview_attributes/GridContainer" unique_id=346950712]
-custom_minimum_size = Vector2(30, 20)
-propagate_maximum_size = true
+[node name="attribute_c" parent="ItemPreview/VBoxContainer/Control/preview_attributes/GridContainer" unique_id=291729725 instance=ExtResource("11_o0uy0")]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="ItemPreview/VBoxContainer/Control/preview_attributes/GridContainer/Control" unique_id=1672442017]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -13.0
-offset_top = -3.5
-offset_bottom = 3.5
-grow_horizontal = 0
-grow_vertical = 2
-text = "99"
-label_settings = ExtResource("12_ac4r1")
-
-[node name="TextureRect" type="TextureRect" parent="ItemPreview/VBoxContainer/Control/preview_attributes/GridContainer/Control" unique_id=933629120]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -8.5
-offset_right = 17.0
-offset_bottom = 8.5
-grow_vertical = 2
-texture = ExtResource("12_txffy")
 
 [node name="Control2" type="Control" parent="ItemPreview/VBoxContainer/Control/preview_attributes/GridContainer" unique_id=431909625]
 custom_minimum_size = Vector2(30, 20)

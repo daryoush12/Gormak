@@ -9,9 +9,48 @@
 [ext_resource type="PackedScene" uid="uid://b10xoj67pf2b1" path="res://nodes/slime.tscn" id="8_0qnnl"]
 [ext_resource type="AudioStream" uid="uid://dbrmgb5gqc1fn" path="res://assets/music/time_for_adventure.mp3" id="10_jw7i3"]
 [ext_resource type="PackedScene" uid="uid://ddvrcpiawxb83" path="res://nodes/sfx_audio_stream_player_2d.tscn" id="10_umbem"]
+[ext_resource type="Script" uid="uid://d2m206ec5l27y" path="res://src/Inventory/InventorySlot.cs" id="11_3n5wk"]
 [ext_resource type="PackedScene" uid="uid://btavdlh5agl3k" path="res://nodes/chest.tscn" id="11_32m3x"]
 [ext_resource type="PackedScene" uid="uid://cditye7u1jjej" path="res://nodes/in_game_gui.tscn" id="11_q1sm7"]
+[ext_resource type="Resource" uid="uid://oyfloc7g8yij" path="res://resources/Items/gold.tres" id="12_f5aj7"]
+[ext_resource type="Resource" uid="uid://brkjrguc1yu0s" path="res://resources/Items/Excalibur.tres" id="12_fn74o"]
 [ext_resource type="PackedScene" uid="uid://dm6jiq5j2tfsd" path="res://nodes/waterbody.tscn" id="12_q1sm7"]
+
+[sub_resource type="Resource" id="Resource_bm625"]
+script = ExtResource("11_3n5wk")
+Item = ExtResource("12_fn74o")
+Quantity = 1
+metadata/_custom_type_script = "uid://d2m206ec5l27y"
+
+[sub_resource type="Resource" id="Resource_5rf75"]
+script = ExtResource("11_3n5wk")
+Item = ExtResource("12_f5aj7")
+Quantity = 10
+metadata/_custom_type_script = "uid://d2m206ec5l27y"
+
+[sub_resource type="Resource" id="Resource_inj5q"]
+script = ExtResource("11_3n5wk")
+metadata/_custom_type_script = "uid://d2m206ec5l27y"
+
+[sub_resource type="Resource" id="Resource_o3cn2"]
+script = ExtResource("11_3n5wk")
+metadata/_custom_type_script = "uid://d2m206ec5l27y"
+
+[sub_resource type="Resource" id="Resource_7q2ni"]
+script = ExtResource("11_3n5wk")
+metadata/_custom_type_script = "uid://d2m206ec5l27y"
+
+[sub_resource type="Resource" id="Resource_v74vv"]
+script = ExtResource("11_3n5wk")
+metadata/_custom_type_script = "uid://d2m206ec5l27y"
+
+[sub_resource type="Resource" id="Resource_kgjxa"]
+script = ExtResource("11_3n5wk")
+metadata/_custom_type_script = "uid://d2m206ec5l27y"
+
+[sub_resource type="Resource" id="Resource_txffy"]
+script = ExtResource("11_3n5wk")
+metadata/_custom_type_script = "uid://d2m206ec5l27y"
 
 [node name="Node2D" type="Node2D" unique_id=182283170]
 
@@ -95,6 +134,7 @@ autoplay = true
 
 [node name="Chest" parent="." unique_id=1335953622 instance=ExtResource("11_32m3x")]
 position = Vector2(144, -95)
+Items = Array[ExtResource("11_3n5wk")]([SubResource("Resource_bm625"), SubResource("Resource_5rf75"), SubResource("Resource_inj5q"), SubResource("Resource_o3cn2"), SubResource("Resource_7q2ni"), SubResource("Resource_v74vv"), SubResource("Resource_kgjxa"), SubResource("Resource_txffy")])
 
 [node name="StaticBody2D5" parent="." unique_id=1116051585 instance=ExtResource("12_q1sm7")]
 

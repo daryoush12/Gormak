@@ -11,8 +11,23 @@ namespace projecttamasuccessor.Inventory
         public delegate void InventoryEventHandler(BaseContainer container);
         public static InventoryEventHandler inventoryInstantiated;
 
+        public delegate void InventoryItemEventHandler(ulong Container, int index);
+        public static InventoryItemEventHandler onItemHovered;
+        public static InventoryItemEventHandler onItemHoverExit;
+        public static InventoryItemEventHandler onItemSold;
+        public static InventoryItemEventHandler onItemCrafted;
+
+        public static void EmitItemHovered(ulong id, int index){
+            onItemHovered?.Invoke(id, index);
+        }
+
+        public static void EmitItemHoverExit(ulong id, int index){
+            onItemHovered?.Invoke(id, index);
+        }
+
         public delegate void InventoryItemMovedEventHandler(ulong fromContainer, int fromIndex, ulong toContainer, int toIndex);
         public static InventoryItemMovedEventHandler inventoryItemMoved;
+
         public static void EmitInventoryItemMoved(ulong fromContainer, int fromIndex, ulong toContainer, int toIndex)
         {
             inventoryItemMoved?.Invoke(fromContainer, fromIndex, toContainer, toIndex);

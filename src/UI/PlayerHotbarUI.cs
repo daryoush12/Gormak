@@ -22,14 +22,17 @@ namespace projecttamasuccessor.UI
         public override void _Ready()
         {
             _events = GetNode<ContainerEventBus>("/root/ContainerEventBus");
-            _events.ContainerOpened += DisplayContainer;
-            ContainerEventBus.inventoryInstantiated += InstantiateHotbar;
+
+            //We have to look for hotbar manually, and load it in, since events might not invoke in time.
+            BaseContainer hotbar = GetTree().GetFirstNodeInGroup("player_inventory_hotbar") as BaseContainer;
+            Refresh(hotbar);
         }
 
         private void InstantiateHotbar(BaseContainer container){
             if(!container.IsInGroup("player_inventory_hotbar")) return;
+            ContainerUISlots.Clear();
 
-            Refresh(container);
+            DisplayContainer(container, null);
         }
 
         /// <summary>
@@ -93,8 +96,7 @@ namespace projecttamasuccessor.UI
         {
             if (disposing)
             {
-                _events.ContainerOpened -= DisplayContainer;
-                ContainerEventBus.inventoryInstantiated -= Refresh;
+          
             }
             base.Dispose(disposing);
         }

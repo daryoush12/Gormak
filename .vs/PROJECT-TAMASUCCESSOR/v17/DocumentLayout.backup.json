@@ -5,6 +5,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{A7D681BE-0550-4F64-856C-02F3AAC6AF4D}|project-tamasuccessor.csproj|d:\\personal\\project-tamasuccessor\\src\\ui\\containerui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A7D681BE-0550-4F64-856C-02F3AAC6AF4D}|project-tamasuccessor.csproj|solutionrelative:src\\ui\\containerui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7D681BE-0550-4F64-856C-02F3AAC6AF4D}|project-tamasuccessor.csproj|d:\\personal\\project-tamasuccessor\\src\\ui\\itempreviewui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7D681BE-0550-4F64-856C-02F3AAC6AF4D}|project-tamasuccessor.csproj|solutionrelative:src\\ui\\itempreviewui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,8 +18,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ItemPreviewUI.cs",
+              "DocumentMoniker": "D:\\Personal\\project-tamasuccessor\\src\\UI\\ItemPreviewUI.cs",
+              "RelativeDocumentMoniker": "src\\UI\\ItemPreviewUI.cs",
+              "ToolTip": "D:\\Personal\\project-tamasuccessor\\src\\UI\\ItemPreviewUI.cs",
+              "RelativeToolTip": "src\\UI\\ItemPreviewUI.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAMBcwB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-06T15:04:11.322Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -24,7 +41,7 @@
               "RelativeDocumentMoniker": "src\\UI\\ContainerUI.cs",
               "ToolTip": "D:\\Personal\\project-tamasuccessor\\src\\UI\\ContainerUI.cs",
               "RelativeToolTip": "src\\UI\\ContainerUI.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAcwD4AAAA7AAAAAAAAAA==",
+              "ViewState": "AgIAACEAAAAAAAAAAAAhwDUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-08-05T14:09:01.156Z",
               "EditorCaption": ""
